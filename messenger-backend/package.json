@@ -1,0 +1,18 @@
+{
+  "name": "messenger-backend",
+  "version": "0.0.1",
+  "description": "messenger backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.17",
+    "@types/ws": "^8.5.3"
+  },
+  "dependencies": {
+    "ws": "^8.11.0"
+  }
+}
