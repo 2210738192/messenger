@@ -66,13 +66,15 @@ ws.addEventListener('message', function (event) {
         message.setAttribute("class", "container");
     }
     
-    document.body.append(message);
+    // scrollContainer.append(message);
+    scrollContainer.insertBefore(message, scrollContainer.firstChild);
 });
 
 const button = document.getElementById("button");
 const input = document.getElementById("message");
 const user = document.getElementById("user");
 const table = document.getElementById("messageTable");
+const scrollContainer = document.getElementById("scrollContainer");
 
 button.addEventListener("click", () => {
     let message = {
