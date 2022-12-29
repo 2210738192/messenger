@@ -46,7 +46,8 @@ class Message extends HTMLDivElement {
 
 customElements.define("chat-message", Message, { extends: "div" });
 
-const ws = new WebSocket("ws://woodpecker-messenger.herokuapp.com/:8080");
+var HOST = location.origin.replace(/^http/, 'ws')
+const ws = new WebSocket(HOST);
 ws.addEventListener("open", () => {
     console.log("We are connected");
 });
