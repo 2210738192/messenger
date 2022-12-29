@@ -43,8 +43,8 @@
 // })
 // server.listen(PORT);
 
-const { Server, WebSocket } = require('ws');
-
+const { Server } = require('ws');
+import WebSocket from 'ws';
 // const wss = new Server({ server });
 
 // wss.on('connection', function connection(ws) {
@@ -58,18 +58,18 @@ const { Server, WebSocket } = require('ws');
 // });
 
 const express = require('express')
-const https = require('https');
+const https = require('http');
 const fs = require('fs');
 
-const options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
+// const options = {
+//   key: fs.readFileSync('key.pem'),
+//   cert: fs.readFileSync('cert.pem')
+// };
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const server = https.createServer(options, app).listen(PORT);
+const server = https.createServer(app).listen(PORT);
 
 app.get("/", (req: any, res: any) => {
   res.sendFile(__dirname + "/index.html");
