@@ -13,7 +13,9 @@ app.get("/:dir", function (req, res) {
     res.sendFile(__dirname + "/" + req.params.dir);
     console.log("dir " + req.params.dir + " requested");
 });
-app.listen(443);
+app.listen(process.env.PORT || 3000, function () {
+    console.log("SERVER STARTED PORT: 3000");
+});
 var wss = new ws_1.WebSocketServer({ port: 5000 });
 wss.on('connection', function connection(ws) {
     ws.on('message', function message(data, isBinary) {
