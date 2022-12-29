@@ -1,11 +1,9 @@
 import { WebSocket, WebSocketServer } from 'ws';
 import express = require("express");
-let http =  require("http");
+import { createServer } from 'http';
 
 const app = express();
-let port = process.env.PORT || 5000
-var server = http.createServer(app)
-server.listen(port)
+let port = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
@@ -17,7 +15,9 @@ app.get("/:dir", (req, res) => {
 })
 app.listen(port);
 
+const server = createServer();
 const wss = new WebSocketServer({server: server});
+server.listen(8080);
 
 wss.on('connection', function connection(ws) {
   ws.on('message', function message(data, isBinary) {
