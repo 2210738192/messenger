@@ -75,8 +75,22 @@ const input = document.getElementById("message");
 const user = document.getElementById("user");
 const table = document.getElementById("messageTable");
 const scrollContainer = document.getElementById("scrollContainer");
+const errorMessage = document.getElementById("errorMessage");
 
 button.addEventListener("click", () => {
+    if(user.value === "" && input.value === ""){
+        errorMessage.innerText = "Bitte Name und Nachricht angeben :-)";
+        return;
+    }
+    if(user.value === ""){
+        errorMessage.innerText = "Bitte Name angeben :-)";
+        return;
+    }
+    if(input.value === ""){
+        errorMessage.innerText = "Bitte Nachricht eingeben :-)";
+        return
+    }
+    errorMessage.innerText = "";
     let message = {
         "message": input.value,
         "user": user.value
