@@ -2,7 +2,6 @@ const { Server } = require('ws');
 import WebSocket from 'ws';
 const express = require('express')
 const https = require('http');
-const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 

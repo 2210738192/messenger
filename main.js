@@ -1,3 +1,6 @@
+// | ------------------------------
+// |    Message Web-Component
+// | ------------------------------
 class Message extends HTMLDivElement {
     constructor() {
         // Always call super first in constructor
@@ -46,8 +49,18 @@ class Message extends HTMLDivElement {
 
 customElements.define("chat-message", Message, { extends: "div" });
 
+//define constants
+const button = document.getElementById("button");
+const input = document.getElementById("message");
+const user = document.getElementById("user");
+const scrollContainer = document.getElementById("scrollContainer");
+const errorMessage = document.getElementById("errorMessage");
+
+//create web-socket
 var HOST = location.origin.replace(/^http/, 'ws')
 const ws = new WebSocket(HOST);
+
+//add event listeners
 ws.addEventListener("open", () => {
     console.log("We are connected");
 });
@@ -66,16 +79,8 @@ ws.addEventListener('message', function (event) {
         message.setAttribute("class", "container");
     }
     
-    // scrollContainer.append(message);
     scrollContainer.insertBefore(message, scrollContainer.firstChild);
 });
-
-const button = document.getElementById("button");
-const input = document.getElementById("message");
-const user = document.getElementById("user");
-const table = document.getElementById("messageTable");
-const scrollContainer = document.getElementById("scrollContainer");
-const errorMessage = document.getElementById("errorMessage");
 
 button.addEventListener("click", () => {
     if(user.value === "" && input.value === ""){

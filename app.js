@@ -7,7 +7,6 @@ const { Server } = require('ws');
 const ws_1 = __importDefault(require("ws"));
 const express = require('express');
 const https = require('http');
-const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const server = https.createServer(app).listen(PORT);
